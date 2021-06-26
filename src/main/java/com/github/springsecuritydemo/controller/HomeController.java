@@ -1,5 +1,7 @@
 package com.github.springsecuritydemo.controller;
 
+import com.github.springsecuritydemo.entity.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
     @RequestMapping(path = "/index", method = RequestMethod.GET)
     public String getIndexPage(Model model) {
+        // 认证成功后，结果会通过 SecurityContextHolder 存入 SecurityContext 中
+        Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (obj instanceof User) {
+            model.addAttribute("loginUser", obj);
+        }
         return "/index";
     }
 
