@@ -12,13 +12,14 @@ flyway
 ```bash
 mvn flyway:clean flyway:migrate
 ```
+- Authority
+    - ADMIN
+        - username:admin
+        - password:aaa
+        - verifyCode:1234
+    - USER    
+        - username:aaa
+        - password:aaa
+        - verifyCode:1234
 
-admin
-- username:admin
-- password:aaa
-- verifyCode:1234
 
-normal user
-- username:aaa
-- password:aaa
-- verifyCode:1234
